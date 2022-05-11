@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+
+html,
+body { height: 100%;
+}
+.parent {
+height: 200px;
+background: #ffffff;
+display: flex;
+align-items: center;
+justify-content: center;
+height:100vh;
+font-family: Arial, Helvetica, sans-serif;
+}
+.child {
+background-color: #FFFF00;
+width: 100px;
+height: 100px;
+}
+
+</style>
+
+<script>
+
+function refreshPage(){
+    window.location.reload();
+}
+
+function imageExists(image_url){
+
+    var http = new XMLHttpRequest();
+
+    http.open('HEAD', image_url, false);
+    http.send();
+
+    return http.status != 404;
+
+}
+
+function chooseWord(maxNum) {
+    while(true) {
+        var val = Math.floor(Math.random() * maxNum);
+        var path = "./GorillaWords/" + val + ".jpg";
+        if(imageExists(path)) {
+            return "GorillaWords/"+val+".jpg";
+        }
+    } 
+}
+
+var word = document.getElementById("word")
+word.src = chooseWord(64);
+
+
+</script>
+
+</head>
+<body style="text-align: center;">
+
+<div class="parent">
+    
+    <img id="word" src="" alt="Gorilla Word of the Day">
+    <br><br><br>
+    <button onclick="refreshPage()">New Gorilla Word of the Day</button>
+
+</div>
