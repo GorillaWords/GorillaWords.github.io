@@ -50,8 +50,6 @@ function chooseWord(maxNum) {
     } 
 }
 
-document.getElementById("word").src = chooseWord(64);
-
 
 </script>
 
@@ -65,3 +63,7 @@ document.getElementById("word").src = chooseWord(64);
     <button onclick="refreshPage()">New Gorilla Word of the Day</button>
 
 </div>
+    
+<script>
+    document.getElementById("word").src = chooseWord(64);    
+</script>
